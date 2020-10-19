@@ -1,0 +1,31 @@
+version: '3'
+
+volumes:
+  mysql-db:
+    driver: local
+
+services:
+  app:
+    container_name: app
+    build: ./docker/server
+    command: php /var/www/markdown_editor/artisan serve --host 0.0.0.0 --port=9000
+    volumes:
+    - ./server:/var/www
+    ports:
+    - 9000:9000
+    depends_on:
+    - mysql
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    - mysql-db:/var/lib/mysql
+    - ./docker/database/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./docker/database/sql:/docker-entrypoint-initdb.d
+    ports:
+    - 3306:3306
