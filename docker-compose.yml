@@ -10,7 +10,7 @@ services:
     build: ./docker/server
     command: php /var/www/markdown_editor/artisan serve --host 0.0.0.0 --port=9000
     volumes:
-    - ./server:/var/www
+    - ./server:/var/www/markdown_editor
     ports:
     - 9000:9000
     depends_on:
