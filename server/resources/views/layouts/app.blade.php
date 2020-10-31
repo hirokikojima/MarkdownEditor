@@ -76,5 +76,7 @@
             @yield('content')
         </main>
     </div>
+    <div id="example"></div>
+    <div id="markdown"></div>
 </body>
 </html>

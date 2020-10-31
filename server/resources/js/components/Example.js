@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Markdown from './markdown/index'
 
 function Example() {
     return (
@@ -21,4 +22,8 @@ export default Example;
 
 if (document.getElementById('example')) {
     ReactDOM.render(<Example />, document.getElementById('example'));
+}
+
+if (document.getElementById('markdown')) {
+    ReactDOM.render(<Markdown />, document.getElementById('markdown'));
 }
